@@ -1,0 +1,12 @@
+FROM debian:bookworm
+
+RUN apt-get update && apt-get -y upgrade
+RUN apt-get install -y --no-install-recommends ca-certificates wget gnupg
+
+ENV JULIA_PATH /usr/local/julia
+ENV PATH $JULIA_PATH/bin:$PATH
+
+RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.9/julia-1.9.3-linux-x86_64.tar.gz -O julia.tar.gz
+RUN mkdir -p "$JULIA_PATH"
+RUN tar zxvf julia.tar.gz -C "$JULIA_PATH" --strip-components 1 && rm julia.tar.gz
+RUN julia --version
