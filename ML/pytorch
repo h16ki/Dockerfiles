@@ -7,4 +7,4 @@ RUN pip install --upgrade pip && \
 # Install pytorch and relatives
 RUN pip install --no-cache-dir torch torchvision \
     --index-url https://download.pytorch.org/whl/cpu && \
-    pip install --no-cache-dir scikit-learn
+    pip install --no-cache-dir botorch scikit-learn
